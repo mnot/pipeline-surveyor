@@ -1,7 +1,7 @@
 { "name" : "pipeline-surveyor"
 , "description" : "HTTP pipeline surveyor"
 , "keywords" : [ "test", "HTTP", "pipeline", "performance" ]
-, "version" : "0.1.0"
+, "version" : "0.1.1"
 , "homepage" : "https://github.com/mnot/pipeline-surveyor"
 , "author" : "Mark Nottingham <mnot@mnot.net> (http://www.mnot.net/)"
 , "repository" :
@@ -14,8 +14,8 @@
 , "main" : "lib/index.js"
 , "bin" : { "pipeline-surveyor" : "./surveyor.js" }
 , "engines" : 
-  { "node" : ">=0.4.0"
-  , "npm" : ">=0.2.18"
+  { "node" : ">=0.2.6"
+  , "npm" : ">=0.2.12"
   }
 , "dependencies" : 
   {}
