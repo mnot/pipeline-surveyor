@@ -32,6 +32,8 @@ c.addListener('connect', function() {
       );        
     }
   );
+  // TODO: ping server to adjust for latency
+  c.setTimeout(5000, check_responses);
 });
 
 
@@ -130,4 +132,3 @@ function fail (why) {
 }
 
 c.addListener('end', check_responses);
-setTimeout(5000, check_responses); // TODO: ping server to adjust for latency
