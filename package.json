@@ -14,7 +14,7 @@
 , "main" : "lib/index.js"
 , "bin" : { "pipeline-surveyor" : "./surveyor.js" }
 , "engines" : 
-  { "node" : ">=0.2.6"
+  { "node" : ">=0.3.7"
   , "npm" : ">=0.2.12"
   }
 , "dependencies" : 
