@@ -1,7 +1,7 @@
 { "name" : "pipeline-surveyor"
 , "description" : "HTTP pipeline surveyor"
 , "keywords" : [ "test", "HTTP", "pipeline", "performance" ]
-, "version" : "0.1.1"
+, "version" : "0.1.2"
 , "homepage" : "https://github.com/mnot/pipeline-surveyor"
 , "author" : "Mark Nottingham <mnot@mnot.net> (http://www.mnot.net/)"
 , "repository" :
