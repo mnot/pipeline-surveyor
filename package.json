@@ -2,14 +2,14 @@
 , "description" : "HTTP pipeline surveyor"
 , "keywords" : [ "test", "HTTP", "pipeline", "performance" ]
 , "version" : "0.1.0"
-, "homepage" : "https://github.com/httplus/draft-nottingham-http-pipeline/surveyor/"
+, "homepage" : "https://github.com/mnot/pipeline-surveyor"
 , "author" : "Mark Nottingham <mnot@mnot.net> (http://www.mnot.net/)"
 , "repository" :
   { "type" : "git"
-  , "url" : "http://github.com/httplus/draft-nottingham-http-pipeline.git"
+  , "url" : "http://github.com/mnot/pipeline-surveyor.git"
   }
 , "bugs" :
-  { "web" : "http://github.com/httplus/draft-nottingham-http-pipeline/issues"
+  { "web" : "http://github.com/mnot/pipeline-surveyor/issues"
   }
 , "main" : "lib/index.js"
 , "bin" : { "pipeline-surveyor" : "./surveyor.js" }
@@ -21,7 +21,7 @@
   {}
 , "licenses" :
   [ { "type" : "MIT"
-    , "url" : "http://github.com/httplus/draft-nottingham-http-pipeline/raw/master/surveyor/LICENSE"
+    , "url" : "http://github.com/mnot/pipeline-surveyor/raw/master/LICENSE"
     }
   ]
 }
