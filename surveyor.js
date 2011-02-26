@@ -16,24 +16,20 @@ c.setNoDelay(true);
 // TODO: do we need to check 100 status codes?
 
 c.addListener('connect', function() {
-  // send four requests over two subsequent packets.
-  console.log('1')
+  // send four requests
+  // TODO: send over two discrete packets more reliably
   c.write(
     "GET /test/a HTTP/1.1\r\n" +
     "Host: " + server_host + ":" + server_port + "\r\n\r\n" +
     "GET /test/b HTTP/1.1\r\n" +
-    "Host: " + server_host + ":" + server_port + "\r\n\r\n")
-//    'ascii',
-//    function () {
-    console.log('2')
-      c.write(
-        "GET /test/c HTTP/1.1\r\n" +
-        "Host: " + server_host + ":" + server_port + "\r\n\r\n" +
-        "GET /test/d HTTP/1.1\r\n" +
-        "Host: " + server_host + ":" + server_port + "\r\n\r\n"
-      );        
-//    }
-//  );
+    "Host: " + server_host + ":" + server_port + "\r\n\r\n"
+  );
+  c.write(
+    "GET /test/c HTTP/1.1\r\n" +
+    "Host: " + server_host + ":" + server_port + "\r\n\r\n" +
+    "GET /test/d HTTP/1.1\r\n" +
+    "Host: " + server_host + ":" + server_port + "\r\n\r\n"
+  );        
   // TODO: ping server to adjust for latency
   c.setTimeout(5000, check_responses);
 });
