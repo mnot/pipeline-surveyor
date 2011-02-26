@@ -40,7 +40,7 @@ var srv = net.createServer(function(c) {
         );
       }
     );
-    c.end();    
+    c.end();
   });
 
   c.addListener('data', function(chunk) {
@@ -61,7 +61,7 @@ srv.listen(server_port, '');
 
 // check incoming requests for an untampered pipeline
 function check_requests (buf) {
-//  output = parse_messages('request', buf)
+  output = parse_messages('request', buf)
 
 // TODO: check number / ordering of requests
 // TODO: check for request modification
