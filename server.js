@@ -1,70 +1,35 @@
 #!/usr/bin/env node
 
-// Server side for pipeline surveyor.
+var http = require('http')
+var path = require("path")
+var url = require("url")
 
-var net = require('net');
-var parse_messages = require('pipeline-surveyor').parse_messages;
+var server_port = 80
 
+http.createServer(function (req, res) {
 
-var server_port = 80;
+  req.on('end', function () {
+    var path = url.parse(request.url).pathname
+    var path_segs = path.split("/")
+    path_segs.shift()
+    
+    var seg = path_segs.shift()
+    switch (seg) {
+      case '': // home page
+        break;
+      case 'test': // test page
+        var name = path_segs.shift()
+        res.writeHead(200, {
+          'Content-Type': "text/html",
+          'Assoc-Req': path
+        })
+        res.end('1234')
+        break;
+      default:
+        res.writeHead(404, {'content-type': 'text/html'})
+        res.end("<html><body><h1>Not Found</h1></body></html>")        
+        break;
+    }
+  })
 
-var srv = net.createServer(function(c) {
-  c.setEncoding('ascii');
-  var buf = "";
-
-  // send four responses over two immediately subsequent packets.
-  c.addListener('connect', function () {
-    c.setNoDelay(true);
-    c.write(
-      'HTTP/1.1 200\r\n' +
-      'Content-Type: text/plain\r\n' +
-      'Assoc-Req: /a\r\n' + 
-      '\r\n' +
-      'HTTP/1.1 200\r\n' +
-      'Content-Type: text/plain\r\n' +
-      'Assoc-Req: /b\r\n' + 
-      '\r\n',
-      "ascii",
-      function () {
-        c.write(
-          'HTTP/1.1 200\r\n' +
-          'Content-Type: text/plain\r\n' +
-          'Assoc-Req: /c\r\n' + 
-          '\r\n' +
-          'HTTP/1.1 200\r\n' +
-          'Content-Type: text/plain\r\n' +
-          'Assoc-Req: /d\r\n' + 
-          'Content-Length: 4\r\n' +
-          '\r\n' +
-          'abcd'
-        );
-      }
-    );
-    c.end();    
-  });
-
-  c.addListener('data', function(chunk) {
-    buf += chunk;
-  });
-
-  c.addListener('end', function() {
-    c.end();
-    check_requests(buf);
-  });
-  
-  // TODO: ping server to adjust timeout for latency
-  setTimeout(5000, check_requests, buf); 
-});
-
-srv.listen(server_port, '');
-
-
-// check incoming requests for an untampered pipeline
-function check_requests (buf) {
-//  output = parse_messages('request', buf)
-
-// TODO: check number / ordering of requests
-// TODO: check for request modification
-  
-}
-
+}).listen(server_port)  

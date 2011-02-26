@@ -17,21 +17,23 @@ c.setNoDelay(true);
 
 c.addListener('connect', function() {
   // send four requests over two subsequent packets.
+  console.log('1')
   c.write(
-    "GET /a HTTP/1.1\r\n" +
+    "GET /test/a HTTP/1.1\r\n" +
     "Host: " + server_host + ":" + server_port + "\r\n\r\n" +
-    "GET /b HTTP/1.1\r\n" +
-    "Host: " + server_host + ":" + server_port + "\r\n\r\n",
-    'ascii',
-    function () {
+    "GET /test/b HTTP/1.1\r\n" +
+    "Host: " + server_host + ":" + server_port + "\r\n\r\n")
+//    'ascii',
+//    function () {
+    console.log('2')
       c.write(
-        "GET /c HTTP/1.1\r\n" +
+        "GET /test/c HTTP/1.1\r\n" +
         "Host: " + server_host + ":" + server_port + "\r\n\r\n" +
-        "GET /d HTTP/1.1\r\n" +
+        "GET /test/d HTTP/1.1\r\n" +
         "Host: " + server_host + ":" + server_port + "\r\n\r\n"
       );        
-    }
-  );
+//    }
+//  );
   // TODO: ping server to adjust for latency
   c.setTimeout(5000, check_responses);
 });
@@ -45,22 +47,22 @@ c.addListener('data', function(chunk) {
 expected_responses = [
   {
     headers: {
-      'assoc-req': '/a'
+      'assoc-req': '/test/a'
     }
   },
   {
     headers: {
-      'assoc-req': '/b'
+      'assoc-req': '/test/b'
     }
   },
   {
     headers: {
-      'assoc-req': '/c'
+      'assoc-req': '/test/c'
     }
   },
   {
     headers: {
-      'assoc-req': '/d'
+      'assoc-req': '/test/d'
     },
     body: "abcd"
   },
