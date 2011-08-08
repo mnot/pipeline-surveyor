@@ -19,9 +19,11 @@ var srv = net.createServer(function(c) {
       'HTTP/1.1 200\r\n' +
       'Content-Type: text/plain\r\n' +
       'Assoc-Req: /test/a\r\n' + 
+      'Content-Length: 0\r\n' +
       '\r\n' +
       'HTTP/1.1 200\r\n' +
       'Content-Type: text/plain\r\n' +
+      'Content-Length: 0\r\n' +
       'Assoc-Req: /test/b\r\n' + 
       '\r\n',
       "ascii",
@@ -29,6 +31,7 @@ var srv = net.createServer(function(c) {
         c.write(
           'HTTP/1.1 200\r\n' +
           'Content-Type: text/plain\r\n' +
+          'Content-Length: 0\r\n' +
           'Assoc-Req: /test/c\r\n' + 
           '\r\n' +
           'HTTP/1.1 200\r\n' +
